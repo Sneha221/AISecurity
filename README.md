@@ -23,21 +23,15 @@ Employee queries salary data → ⚠️ Partial access (salary redacted)
 Admin with CONFIDENTIAL clearance → ✅ Full access granted
 Attacker attempts prompt injection → 🚫 Blocked instantly
 
-┌─────────────────┐
-│  USER REQUEST   │
-└────────┬────────┘
-         ↓
-┌────────────────────────┐
-│  Layer 1: SECURITY     │  ← Input validation, threat detection
-├────────────────────────┤
-│  Layer 2: AI AGENT     │  ← LangGraph + Qwen 2.5 reasoning
-├────────────────────────┤
-│  Layer 3: PERMISSIONS  │  ← RBAC verification
-├────────────────────────┤
-│  Layer 4: TOOLS        │  ← FAQ, Employee DB, Reports
-├────────────────────────┤
-│  Layer 5: AUDIT LOG    │  ← Complete forensic trail
-└────────────────────────┘
+flowchart TD
+    A[USER REQUEST]
+
+    A --> B[Layer 1: SECURITY<br/>Input validation<br/>Threat detection]
+    B --> C[Layer 2: AI AGENT<br/>LangGraph + Qwen 2.5 reasoning]
+    C --> D[Layer 3: PERMISSIONS<br/>RBAC verification]
+    D --> E[Layer 4: TOOLS<br/>FAQ · Employee DB · Reports]
+    E --> F[Layer 5: AUDIT LOG<br/>Complete forensic trail]
+
 
 Defense in Depth: If one layer fails, others catch it.
 
